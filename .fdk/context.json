@@ -1,0 +1,16 @@
+{
+  "theme": {
+    "active_context": "LuxeTheme",
+    "contexts": {
+      "LuxeTheme": {
+        "name": "LuxeTheme",
+        "application_id": "638451fa8810294d0d628f8b",
+        "domain": "spanideasystems.hostx1.de",
+        "company_id": 13778,
+        "theme_id": "63da0e04f5445786cb12d2c7",
+        "env": "fyndx1"
+      }
+    }
+  },
+  "partners": {}
+}
