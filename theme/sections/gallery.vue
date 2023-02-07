@@ -4,7 +4,7 @@
       <div class="card-container">
         <div class="top-items section_padding">
           <div class="title-block">
-            <div :style="'color:' + global_config.props.text_heading_link_color" class="section-heading font_head"
+            <div class="section-heading font_head font-header"
               v-if="
               (settings.props.title.value && settings.props.title.value.length > 0 && settings.props.layout.value !== 'horizontal1' && settings.props.layout.value !== 'horizontal2')">
               {{ settings.props.title.value }}
@@ -168,19 +168,24 @@
   margin-top: var(--margin-top);
   margin-bottom: var(--margin-bottom);
 }
+
 .gallery-container {
+
   // margin: 20px 0px 30px 0px;
   @media @mobile {
     margin-top: 0;
   }
+
   .card-container {
     margin: 0;
+
     .top-items {
       // padding: 14px;
       border-radius: @border-radius;
       background: transparent;
       // margin: 10px 0 0 0;
     }
+
     .title-block {
       display: flex;
       text-transform: uppercase;
@@ -189,20 +194,24 @@
       position: relative;
       max-width: @page-width;
       .margin-0-auto();
+
       >div {
         flex: 0 0 100%;
       }
     }
+
     .link {
       position: absolute;
       line-height: 35px; //this is used to match the title-block height
       right: 0px;
       bottom: @title-margin-desktop;
+
       @media @tablet {
         display: none;
       }
     }
   }
+
   .arrows {
     //position: relative;
     //display: flex;
@@ -210,9 +219,11 @@
     // top: 50%;
     //width: 100%;
     // margin: -40px 0 0 0;
+
     @media @mobile {
       display: none;
     }
+
     section {
       //position: relative;
       //width: 20%;
@@ -222,9 +233,11 @@
       //box-sizing: border-box;
     }
   }
+
   //.prev-btn {
   //margin-right: 22px;
   //}
+
   .glide__bullets {
     position: relative;
     z-index: 2;
@@ -234,23 +247,29 @@
     list-style: none;
     transform: translateX(0%);
     padding-right: 5%;
+
     color: transparent;
     align-items: center;
+
     @media @mobile {
       display: none;
     }
   }
+
   .glide__bullet {
     background-color: unset;
     border: 1px solid @color-black;
     box-shadow: unset;
+
     &:hover {
       background-color: @color-black;
     }
+
     &.glide__bullet--active {
       background-color: @color-black;
     }
   }
+
   .glide__bullet {
     background-color: lightgrey;
     width: 100%;
@@ -264,24 +283,30 @@
     //box-shadow: 0 .25em .5em 0 rgba(0,0,0,.1);
     margin: 0 0;
   }
+
   .glide__slide {
     height: auto;
+
     a {
       display: flex;
       height: 100%;
     }
+
     /deep/ .placeholder-svg {
       height: 99%;
       display: flex;
+
       svg {
         width: 100%;
       }
     }
   }
+
   .glide__slides.ssr-slides-box {
     touch-action: unset;
     overflow-x: auto;
   }
+
   .btn-nav-gallery {
     z-index: @layer;
     padding: unset;
@@ -290,13 +315,16 @@
     display: flex;
     justify-content: center;
     transition: transform .2s;
+
     &:hover {
       transform: scale(1.2);
     }
   }
+
   .next-btn {
     margin-left: auto;
   }
+
   .icon {
     //display: inline-block;
     width: 45px;
@@ -305,34 +333,43 @@
     border-radius: 50%;
     border: 1px solid lightgray;
   }
+
   .icon-next {
+
     transform: rotate(180deg);
   }
+
   .icon-prev {
     background-image: url(../assets/images/nav-arrow.svg);
   }
+
   //-----------------------------------GRID 6----------------------------------
+
   .grid6 {
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 24px;
     align-items: center;
     padding: 0% 60px;
+
     @media screen and (max-width: 768px) {
       gap: 16px;
       padding: 0% 40px;
     }
+
     @media screen and (max-width: 480px) {
       grid-template-columns: auto auto;
       gap: 14px;
       padding: 0% 16px;
     }
   }
+
   .grid6_item {
     // interrupting aspect-ratio
     height: 100%;
     width: 100%;
   }
+
   .grid6_item>img {
     //max-height: 100%;
     //max-width: 100%;
@@ -340,80 +377,141 @@
     width: 100%;
     height: 100%;
   }
+
+
   //-----------------------------------GRID 5----------------------------------
+
   .grid5 {
     display: grid;
     grid-template-columns: 60% auto auto;
     gap: 20px;
     align-items: center;
     padding: 0% 52px;
+
   }
+
   .grid5>.grid5_item {
     width: 100%;
     height: 100%;
   }
+
   .grid5_item_1 {
     grid-row-start: 1;
     grid-row-end: 3;
   }
+
+
+
+
   @media screen and (max-device-width: 768px) {
     .grid5_item_1 {
+
       grid-row-start: 1;
       grid-row-end: 2;
       grid-column-start: 1;
       grid-column-end: 3;
     }
+
     .grid5 {
       grid-template-columns: auto auto auto;
       padding: 0% 40px;
       gap: 16px;
+
     }
   }
+
+  @media only screen and (max-width: 768px) and (min-width: 480px) {
+    .grid5 {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      aspect-ratio: 1;
+    }
+
+    .grid5_item_1 {
+      grid-row-start: 1;
+      grid-row-end: 3;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    .grid5_item_2 {
+      grid-row-start: 1;
+      grid-row-end: 3;
+    }
+  }
+
   @media screen and (max-device-width: 480px) {
     .grid5 {
-      grid-template-columns: auto auto;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
       padding: 0% 16px;
       gap: 14px;
+
+    }
+    .grid5_item{
+      aspect-ratio: 1;
+    }
+
+    .grid5_item_1 {
+      grid-row-end: 3;
     }
   }
+
   .grid5_item>img {
     //max-height: 500px;
     width: 100%;
     height: 100%; // interrupting aspect ratio
     aspect-ratio: 1;
   }
+
   .grid5_item_2>img {
     @media screen and (min-device-width: 481px) and (max-device-width: 768px) {
       //aspect-ratio: 1/2;
       object-fit: cover;
     }
   }
+
   .grid5_item_1>img {
     object-fit: cover;
+
     @media screen and (min-device-width: 768px) {
       aspect-ratio: 1.6;
+
     }
   }
+
+
   //------------------------------------For Animations---------------------------------
+
+
   .grid6_item,
   .grid5_item {
     overflow: hidden;
   }
+
+
+
   .grid6_item:hover>img,
   .grid5_item:hover>img {
     transform: scale(1.5);
     transition-duration: 1s;
     animation-timing-function: ease-in-out;
   }
+
   //------------------------------------------------------------------------------
+
+
+
   .div1 {
     display: flex;
     flex-direction: row;
     align-items: center;
+
     @media screen and (max-width: 480px) {
       flex-direction: column;
     }
   }
+
   .stickyContent {
     width: 20%;
     align-items: center;
@@ -424,14 +522,17 @@
     font-size: 28px;
     line-height: 32px;
     padding: 5% 2%;
+
     @media screen and (max-width: 480px) {
       //align-self: center;
       width: unset;
     }
   }
+
   .glide__track {
     width: 80%;
   }
+
   .div2 {
     display: grid;
     grid-template-columns: auto 110px;
@@ -439,12 +540,15 @@
     ;
     padding-left: 72px;
     padding-right: 72px;
+
     @media screen and (max-width: 768px) {
       padding-top: 8px;
       padding-left: 40px;
       padding-right: 40px;
     }
+
   }
+
   .glideBlock {
     display: flex;
     flex-direction: column;
@@ -453,21 +557,27 @@
     height: 100%;
     background-color: transparent;
     padding-right: 16px;
+
     @media screen and (max-width: 480px) {
       padding-right: 12px;
     }
   }
+
   .evenSlide {
     margin-top: 4%;
   }
+
   .section_padding {
     padding: 40px 0px;
+
     @media screen and (max-width: 768px) {
       padding: 32px 0px;
     }
+
     @media screen and (max-width: 480px) {
       padding: 16px 0px;
     }
+
     .font_head {
       //styleName: desktop/H3 - 28px Marcellus;
       font-family: Marcellus;
@@ -476,6 +586,8 @@
       line-height: 32px;
       letter-spacing: -0.02em;
       margin-bottom: 56px;
+      color: @TextHeading;
+
       @media screen and (max-width: 768px) {
         //styleName: Mobile/H3 - 24 px Marcellus;
         font-family: Marcellus;
@@ -485,24 +597,31 @@
         letter-spacing: -0.02em;
         text-align: center;
         margin-bottom: 40px;
+
       }
-      @media screen and (max-width: 768px){
+
+      @media screen and (max-width: 768px) {
         margin-bottom: 38px;
       }
+
     }
   }
+
+
+
 }
 </style>
 <script>
 import { detectMobileWidth, glidePaginate } from "../helper/utils";
 import { isBrowser, isNode } from "browser-or-node";
-import groupList from "./../global/components/group-list.vue";
-import galleryItem from "./../global/components/gallery-item.vue";
+import groupList from "../global/components/group-list.vue";
+import galleryItem from "../global/components/gallery-item.vue";
 import Glide from '@glidejs/glide'
 import '../../node_modules/@glidejs/glide/dist/css/glide.core.min.css';
 import '../../node_modules/@glidejs/glide/dist/css/glide.theme.min.css';
 import placeholderItemsVue from "../global/components/sections/placeholder-items.vue";
 import arrowsvg from '../assets/images/nav-arrow.svg';
+
 export default {
   props: ["settings", "global_config"],
   components: {
@@ -603,6 +722,7 @@ export default {
           } else if (window.screen.width <= 480) {
             this.glideOptions.gap = 12
           }
+
           this.carouselHandle = new Glide(this.$refs.glide, this.glideOptions)
           let glideClass = this.$refs.glide.getAttribute('class')
           this.carouselHandle.on(['move.after'], () => {
