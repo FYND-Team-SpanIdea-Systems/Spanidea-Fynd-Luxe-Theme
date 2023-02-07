@@ -188,4 +188,13 @@ export const logoUrl = function(logo, mobileLogo) {
 };
 export const getSectionValue = function (settings,id) {
     return settings?.props?.[id]?.value || "" ;
-}
+};
+export const detect480Width = () => {
+    if (isBrowser) {
+        if (window && window.screen.width <= 480) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+};

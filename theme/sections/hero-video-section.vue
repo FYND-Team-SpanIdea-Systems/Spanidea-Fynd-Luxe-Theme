@@ -5,14 +5,8 @@
       <video ref="mp4video" width="100%" :poster="getValueById('cover_url')" :autoplay="checkVideoAutoplay()"
         :loop="settings.props.loop.value" :controls="!settings.props.controls.value" playsinline
         @pause="showOverlay = true" :muted="checkVideoAutoplay()" @play="showOverlay = false"
-        @ended="showOverlay = true" preload="auto" v-if="isMp4()">
-        <source :src="settings.props.video_url.value" type="video/mp4" allowfullscreen />
-      </video>
-      <video ref="GDvideo" width="100%" :poster="getValueById('cover_url')" :autoplay="checkVideoAutoplay()"
-        :loop="settings.props.loop.value" :controls="!settings.props.controls.value" playsinline
-        @pause="showOverlay = true" :muted="checkVideoAutoplay()" @play="showOverlay = false"
-        @ended="showOverlay = true" preload="auto" v-else-if="isGoogleDrive()">
-        <source :src="getGDVideoID(settings.props.video_url.value)" type="video/mp4" allowfullscreen />
+        @ended="showOverlay = true" preload="auto" v-if="getVideoSrc()">
+        <source :src="getVideoSrc()" type="video/mp4" allowfullscreen />
       </video>
       <div class="yt-container" v-else-if="isYoutube()">
         <div class="yt-video" ref="ytVideo" :id="'yt-video-' + getYTVideoID(settings.props.video_url.value)"
@@ -39,10 +33,10 @@
             <div class="overlay__text" v-if="
               settings.props.heading.value || settings.props.description.value
             ">
-              <h2 v-if="settings.props.heading.value" class="font_head" :style="`color:white;`">
+              <h2 v-if="settings.props.heading.value" class="font_head font-header">
                 {{ settings.props.heading.value }}
               </h2>
-              <p v-if="settings.props.description.value" class="font_subHead" :style="`color:white;`">
+              <p v-if="settings.props.description.value" class="font_subHead font-body">
                 <span>{{ settings.props.description.value }} </span>
               </p>
             </div>
@@ -55,11 +49,11 @@
     <div class="overlay480" v-if="
       settings.props.heading.value || settings.props.description.value
     ">
-      <h2 class="font_head" v-if="settings.props.heading.value" :style="`color:white;`">
+      <h2 class="font_head font-header" v-if="settings.props.heading.value" >
         {{ settings.props.heading.value }}
       </h2>
-      <p class="font_subHead" v-if="settings.props.description.value" :style="`color:white;`">
-        <span>{{ settings.props.description.value }} </span>
+      <p class="font_subHead font-body" v-if="settings.props.description.value">
+        <span>{{ settings.props.description.value }}</span>
       </p>
     </div>
   </div>
@@ -71,11 +65,18 @@
   "label": "Hero Video",
   "props": [
     {
+    "type":"video",
+    "id":"video_attached",
+    "default": false,
+    "label": "Video",
+    "info":"Supports MP4 Video"
+    },
+    {
       "id": "video_url",
       "type": "text",
       "label": "Video link",
       "default": "",
-      "info":"Supports MP4 Video & Youtube Video URL"
+      "info":"Supports MP4 Video, Youtube Video URL & GoogleDrive Video URL"
     },
     {
       "type": "checkbox",
@@ -123,8 +124,9 @@
 <!-- #endregion -->
 
 <script>
-import btn from "./../components/common/button.vue";
-import SvgWrapper from "./../components/common/svg-wrapper.vue";
+import btn from "../components/common/button.vue";
+import SvgWrapper from "../components/common/svg-wrapper.vue";
+
 export default {
   components: {
     "sm-button": btn,
@@ -149,6 +151,7 @@ export default {
     },
   },
   computed: {
+
   },
   beforeMount() {
   },
@@ -164,6 +167,18 @@ export default {
     };
   },
   methods: {
+    getVideoSrc(){
+      if(this.isMp4Attached()){
+        return this.settings.props.video_attached.value;
+      }
+      else if(this.isMp4()){
+        return this.settings.props.video_url.value;
+      }
+      else if(this.isGoogleDrive()){
+        return this.getGDVideoID(this.settings.props.video_url.value)
+      }
+      return false;
+    },
     loadYTScript() {
       var self = this;
       let nodes = document.querySelectorAll("[data-ytscript]");
@@ -197,6 +212,7 @@ export default {
         window.players = null;
       }
       let nodes = document.querySelectorAll("[data-ytscript]");
+
       if (nodes.length > 0) {
         nodes.forEach((element) => {
           element.parentNode.removeChild(element);
@@ -216,6 +232,13 @@ export default {
       } else {
         return false;
       }
+    },
+    isMp4Attached(url = this.getValueById("video_attached")){
+      if (!url) {
+        return false;
+        
+      }
+      return true;
     },
     isYoutube(url = this.getValueById("video_url")) {
       if (!url) {
@@ -253,13 +276,9 @@ export default {
     },
     getGDVideoID(url) {
       let urlObj = new URL(url);
-      console.log("urlObj is ", urlObj);
       let v = urlObj.pathname.split("/");
-      console.log("after split by / v is ", v);
       v = v[v.indexOf("d") + 1];
-      console.log("val of v before gd is", v);
       v = "https://drive.google.com/uc?export=download&id=" + v;
-      console.log("val of v after gd is", v);
       return v;
     },
     onYouTubeIframeAPIReady() {
@@ -274,13 +293,17 @@ export default {
         if (players[videoID]) {
           continue;
         }
+
         players[videoID] = {};
+
         let videoMeta = JSON.parse(node.dataset.videometa);
-        console.log("hey videometa", videoMeta);
+        //console.log("hey videometa", videoMeta);
         let qautoplay = videoMeta.autoplay.value ? 1 : 0,
           qcontrols = videoMeta.controls.value ? 0 : 1,
           qloop = videoMeta.loop.value ? 1 : 0;
-        console.log("qautoplay qcontrols qloop is ", qautoplay, qcontrols, qloop);
+        //console.log("qautoplay qcontrols qloop is ", qautoplay, qcontrols, qloop);
+
+
         players[videoID].onReady = function (e) {
           if (qautoplay) {
             e.target.playVideo();
@@ -293,11 +316,13 @@ export default {
             document.getElementById("play_button").style.display = "none";  // none changed to flex  //working state
             document.getElementById("hide_on_play").style.display = "none";  // none changed to flex  //working state
           }
+
           if (event.data == YT.PlayerState.PAUSED) {
             //document.getElementById("video_overlay").style.display = "flex";
             document.getElementById("play_button").style.display = "flex"; // none changed to flex  //working state
             document.getElementById("hide_on_play").style.display = "flex"; // none changed to flex  //working state
           }
+
           if (event.data == YT.PlayerState.ENDED && qloop === 1) {
             p[videoID].inst.seekTo(0);
             p[videoID].inst.playVideo();
@@ -328,10 +353,10 @@ export default {
       this.showOverlay = false;
       this.$refs.mp4video.play();
     },
-    playGD() {
-      this.showOverlay = false;
-      this.$refs.GDvideo.play();
-    },
+    //playGD() {
+      //this.showOverlay = false;
+      //this.$refs.GDvideo.play();
+    //},
     playYT() {
       this.showOverlay = true; // false changed to true
       this.$refs.video_overlay.style.display = "flex"; // none changed to flex
@@ -340,20 +365,22 @@ export default {
       p[videoID].inst.playVideo();
     },
     playMyVideo() {
-      if (this.isMp4()) {
+      if (this.isMp4Attached() || this.isMp4() || this.isGoogleDrive()) {
         this.playMp4();
-      } else if (this.isGoogleDrive()) {
-        this.playGD();
-      } else {
+      } 
+      else {
         this.playYT();
       }
     },
+
     checkVideoAutoplay() {
+
       return this.getValueById("autoplay");
     },
     checkVideoControls() {
       if (this.getValueById("controls"))
         return true;
+
       return false;
     },
     getValueById(id) {
@@ -362,146 +389,185 @@ export default {
   },
 };
 </script>
+
 <style scoped lang="less">
 .video-container {
   position: relative;
   height: 100vh;
+
   @media screen and (max-width: 480px) {
     height: 226px;
   }
+
   video {
     height: 100%;
     object-fit: cover;
   }
+
   .yt-container {
     height: 100%;
   }
 }
+
 .center-overlay {
   text-align: center;
   inset: 50% auto auto 50%;
   transform: translate(-50%, -50%);
 }
+
 .overlay {
+
   &__image,
   &__color {
     position: absolute;
     inset: 0;
   }
+
   &__content {
     //min-height: 120px;
+
     position: absolute;
     width: 83%; //figma
     max-width: 637px; //figma
+
     @media screen and (max-width: 768px) {
       padding: 0px 0px;
       width: 83%; //figma
       max-width: 632px; //figma
     }
+
     @media screen and (max-width: 480px) {
       padding: 0px 0px;
       width: 100%;
     }
+
+
+
     &--text {
       z-index: 2;
       isolation: isolate;
     }
+
     &.top-left {
       top: 15%;
       left: @header-padding-desktop;
+
       @media @tablet {
         .center-overlay();
       }
     }
+
     &.top-center {
       top: 15%;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
+
       @media @tablet {
         .center-overlay();
       }
     }
+
     &.top-right {
       top: 15%;
       right: @header-padding-desktop;
       text-align: right;
+
       @media @tablet {
         .center-overlay();
       }
     }
+
     &.center-left {
       left: @header-padding-desktop;
       top: 50%;
       transform: translateY(-50%);
+
       @media @tablet {
         .center-overlay();
       }
     }
+
     &.center-center {
       text-align: center;
       .center-overlay(); //idk
+
       @media screen and (max-width: 768px) {
         //bottom: 10%;
         //left: 50%;
         transform: translateX(-50%);
       }
+
       @media screen and (max-width: 480px) {
         //bottom: 10%;
         //left: 50%;
         transform: translate(-50%, -50%);
       }
     }
+
     &.center-right {
       right: @header-padding-desktop;
       top: 50%;
       transform: translateY(-50%);
       text-align: right;
+
       @media @tablet {
         .center-overlay();
       }
     }
+
     &.bottom-left {
       bottom: 10%;
       left: @header-padding-desktop;
+
       @media @tablet {
         .center-overlay();
       }
     }
+
     &.bottom-right {
       bottom: 10%;
       right: @header-padding-desktop;
       text-align: right;
+
       @media @tablet {
         .center-overlay();
       }
     }
+
     &.bottom-center {
       bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
+
       @media @tablet {
         .center-overlay();
       }
     }
   }
+
   &__text {
     padding-left: 16px; //figma
     padding-right: 16px; //figma
     padding-bottom: 32px;
+
     @media screen and (max-width: 768px) {
       padding-right: 15px;
       padding-left: 15px;
     }
+
     @media screen and (max-width: 480px) {
       display: none;
       //padding-right: 28px;
       //padding-left: 28px;
     }
-    h2 {}
-    p {}
+
+    //h2 {}
+
+    // p {}
   }
+
   .play-button {
     ::v-deep svg {
       width: 80px;
@@ -510,26 +576,35 @@ export default {
       fill: white;
       opacity: 0.6;
     }
+
+
     margin-top: 32px;
+
     @media @tablet {
+
       margin-top: 32px;
     }
+
     @media @mobile {
       margin-top: unset;
     }
   }
+
   .overlay__color {
     background-color: black;
     opacity: 0.6;
+
     @media screen and (max-width: 480px) {
       background-color: unset;
     }
   }
 }
+
 .overlay480 {
   display: none;
   padding-right: 28px;
   padding-left: 28px;
+
   @media screen and (max-width: 480px) {
     display: flex;
     background-color: black;
@@ -537,8 +612,10 @@ export default {
     text-align: center;
     flex-direction: column;
     padding-bottom: 32px;
+
   }
 }
+
 .font_head {
   //styleName: desktop/H2 - 32px Marcellus;
   font-family: Marcellus;
@@ -548,6 +625,9 @@ export default {
   letter-spacing: -0.02em;
   margin-bottom: 19px;
   margin-top: 32px;
+  color: @ThemeAccentL5;
+
+
   @media @tablet {
     //styleName: Mobile/H2 - 28 px Marcellus;
     font-family: Marcellus;
@@ -555,7 +635,9 @@ export default {
     font-weight: 400;
     line-height: 32px;
     letter-spacing: -0.02em;
+
   }
+
   @media @mobile {
     //styleName: Mobile/H2 - 28 px Marcellus;
     font-family: Marcellus;
@@ -563,8 +645,11 @@ export default {
     font-weight: 400;
     line-height: 32px;
     letter-spacing: -0.02em;
+
   }
+
 }
+
 .font_subHead {
   //styleName: desktop/B1 - 16 px;
   font-family: Inter;
@@ -572,6 +657,8 @@ export default {
   font-weight: 400;
   line-height: 22px;
   letter-spacing: -0.02em;
+  color: @ThemeAccentL5;
+
   @media @tablet {
     //styleName: Mobile/B1 - 14px - Inter;
     font-family: Inter;
@@ -579,6 +666,8 @@ export default {
     font-weight: 400;
     line-height: 20px;
     letter-spacing: -0.02em;
+
   }
+
 }
 </style>
