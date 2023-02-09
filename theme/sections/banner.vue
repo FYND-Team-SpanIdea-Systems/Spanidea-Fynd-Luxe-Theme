@@ -99,7 +99,7 @@
 </style>
 
 <script>
-import btn from "./../components/common/button.vue";
+import btn from "../components/common/button.vue";
 import emergeImage from "../global/components/common/emerge-image.vue";
 
 export default {

@@ -3,8 +3,8 @@
     <template v-if="settings.props.styleV.value === 'style1'">
       <section :class='["media-with-text" ,"full-width-section"]' >
       <div :class='["media-with-text__content"] '>
-        <div class="media-with-text__content--main">
-          {{ settings.props.text.value }} amresh
+        <div class="media-with-text__content--main font-header">
+          {{ settings.props.text.value }}
         </div>
       </div>
       <div class="media-with-text__mainBlock">
@@ -13,7 +13,7 @@
             <div class="photo">
               <img :src=this.image_url0 />
             </div>
-            <div class="media-with-text__mainBlock--firstBlock--text">{{this.title0}}</div>
+            <div class="media-with-text__mainBlock--firstBlock--text font-body">{{this.title0}}</div>
           </div>
         </fdk-link>
         <fdk-link :link= "`/blog/${this.slug_val1}`" :title=this.title1>
@@ -21,7 +21,7 @@
             <div class="photo">
               <img :src=this.image_url1 />
             </div>
-            <div class="media-with-text__mainBlock--secondBlock--text">{{this.title1}}</div>
+            <div class="media-with-text__mainBlock--secondBlock--text font-body">{{this.title1}}</div>
           </div>
         </fdk-link>
         <fdk-link :link= "`/blog/${this.slug_val2}`" :title=this.title2>
@@ -29,22 +29,13 @@
             <div class="photo">
               <img :src=this.image_url2 />
             </div>
-            <div class="media-with-text__mainBlock--thirdBlock--text">{{this.title2}}</div>
+            <div class="media-with-text__mainBlock--thirdBlock--text font-body">{{this.title2}}</div>
           </div>
         </fdk-link>
       </div>
       <div class="media-with-text__btn">   
         <fdk-link :link= "`/blog/`">
-          <sm-button
-            :backgroundcolortype="'primary'"
-            :colortype="'primary'"
-            :bordertype="'primary'"
-            :padding="'primary'"
-            :global_config="global_config"
-            v-if="settings.props.button_text.value"
-          >
-            {{ settings.props.button_text.value }}
-            </sm-button>
+          <button class="btn_main">{{ settings.props.button_text.value }}</button>
         </fdk-link>
       </div>
       </section>
@@ -54,7 +45,7 @@
     <template v-if="settings.props.styleV.value === 'style2'">
       <section :class='["media-with-text2" ,"full-width-section"]'>
         <div :class='["media-with-text2__content"] '>
-          <div class="media-with-text2__content--main">
+          <div class="media-with-text2__content--main font-header">
             {{ settings.props.text.value }}
           </div>
         </div>
@@ -64,7 +55,7 @@
               <div class="photo">
                 <img :src=this.image_url0 />
               </div> 
-              <div class="media-with-text2__mainBlock--secondBlock--text">{{this.title0}}</div>
+              <div class="media-with-text2__mainBlock--secondBlock--text font-body">{{this.title0}}</div>
           </div>
           </fdk-link>
           <fdk-link :link= "`/blog/${this.slug_val1}`" :title=this.title1>
@@ -72,7 +63,7 @@
               <div class="photo">
                 <img :src=this.image_url1 />
               </div>
-              <div class="media-with-text2__mainBlock--secondBlock--text">{{this.title1}}</div>
+              <div class="media-with-text2__mainBlock--secondBlock--text font-body">{{this.title1}}</div>
             </div>
           </fdk-link>
         </div>
@@ -82,7 +73,7 @@
               <div class="photo">
                 <img :src=this.image_url2 />
               </div>
-              <div class="media-with-text2__secondBlock--firstBlock--text">{{this.title2}}</div>
+              <div class="media-with-text2__secondBlock--firstBlock--text font-body font-body">{{this.title2}}</div>
             </div>
           </fdk-link>
           <fdk-link :link= "`/blog/${this.slug_val3}`" :title=this.title3>
@@ -90,7 +81,7 @@
               <div class="photo">
                 <img :src=this.image_url3 />
               </div>
-              <div class="media-with-text2__secondBlock--secondBlock--text">{{this.title3}}</div>
+              <div class="media-with-text2__secondBlock--secondBlock--text font-body">{{this.title3}}</div>
             </div>
           </fdk-link>
           <fdk-link :link= "`/blog/${this.slug_val4}`" :title=this.title4>
@@ -98,22 +89,13 @@
               <div class="photo">
                 <img :src=this.image_url4 />
               </div>
-              <div class="media-with-text2__secondBlock--thirdBlock--text">{{this.title4}}</div>
+              <div class="media-with-text2__secondBlock--thirdBlock--text font-body">{{this.title4}}</div>
             </div>
           </fdk-link>
         </div>
         <div class="media-with-text2__btn">   
           <fdk-link :link= "`/blog/`">
-            <sm-button
-              :backgroundcolortype="'primary'"
-              :colortype="'primary'"
-              :bordertype="'primary'"
-              :padding="'primary'"
-              :global_config="global_config"
-              v-if="settings.props.button_text.value"
-            >
-              {{ settings.props.button_text.value }}
-              </sm-button>
+            <button class="btn_main">{{ settings.props.button_text.value }}</button>
           </fdk-link>
         </div>
       </section>
@@ -123,7 +105,7 @@
     <template v-if="settings.props.styleV.value === 'style3'">
       <section :class='["media-with-text3" ,"full-width-section"]'>
         <div :class='["media-with-text3__content"] '>
-          <div class="media-with-text3__content--main">
+          <div class="media-with-text3__content--main font-header">
             {{ settings.props.text.value }}
           </div>
         </div>
@@ -133,7 +115,7 @@
               <div class="photo">
                 <img :src=this.image_url0 />
               </div>
-              <div class="media-with-text3__mainBlock--firstBlock--text">{{this.title0}}</div>
+              <div class="media-with-text3__mainBlock--firstBlock--text font-body">{{this.title0}}</div>
             </div>
           </fdk-link>
         </div>
@@ -143,7 +125,7 @@
               <div class="photo">
                 <img :src=this.image_url1 />
               </div>
-              <div class="media-with-text3__secondBlock--firstBlock--text">{{this.title1}}</div>
+              <div class="media-with-text3__secondBlock--firstBlock--text font-body">{{this.title1}}</div>
             </div>
           </fdk-link>
           <fdk-link :link= "`/blog/${this.slug_val2}`" :title=this.title2>
@@ -151,22 +133,13 @@
               <div class="photo">
                 <img :src=this.image_url2 />
               </div>
-              <div class="media-with-text3__secondBlock--secondBlock--text">{{this.title2}}</div>
+              <div class="media-with-text3__secondBlock--secondBlock--text font-body">{{this.title2}}</div>
             </div>
           </fdk-link>
         </div>
         <div class="media-with-text3__btn">  
           <fdk-link :link= "`/blog/`">
-            <sm-button
-              :backgroundcolortype="'primary'"
-              :colortype="'primary'"
-              :bordertype="'primary'"
-              :padding="'primary'"
-              :global_config="global_config"
-              v-if="settings.props.button_text.value"
-            >
-              {{ settings.props.button_text.value }}
-              </sm-button>
+            <button class="btn_main">{{ settings.props.button_text.value }}</button>
           </fdk-link> 
         </div>
       </section>
@@ -225,19 +198,45 @@
 }
 .media-with-text {
   width: 1440px;
-  height: 542px;
+  // height: 542px;
   @media screen and (max-width: 768px) {
     width: 744px;
-    height: 304px;
+    // height: 304px;
   }
   @media screen and (max-width: 480px) {
     width: 320px;
-    height: 787px;
+    // height: 787px;
   }
 
   &__btn {
     padding-top: 30px;
     text-align-last: center;
+    .btn_main {
+      background-color: @ButtonPrimary;
+      color: @ButtonSecondary;
+      width: 178px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: none;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 10px;
+      @media @tablet {
+        width: 110px;
+        font-size: 12px;
+        height: 34px;
+      }
+      @media @mobile {
+        width: 110px;
+        font-size: 12px;
+        height: 34px;
+      }
+    }
     @media screen and (max-width: 768px) {
       padding-top: 32px;
     }
@@ -403,7 +402,6 @@
     padding-left: 689px;
     &--main {
       font-size: 32px;
-      font-family: Marcellus;
       font-weight: 300;
       line-height: 36px;
       color: @TextHeading;
@@ -446,6 +444,32 @@
   &__btn {
     padding-top: 40px;
     text-align-last: center;
+    .btn_main {
+      background-color: @ButtonPrimary;
+      color: @ButtonSecondary;
+      width: 178px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: none;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 10px;
+      @media @tablet {
+        width: 110px;
+        font-size: 12px;
+        height: 34px;
+      }
+      @media @mobile {
+        width: 110px;
+        font-size: 12px;
+        height: 34px;
+      }
+    }
     @media screen and (max-width: 768px) {
       padding-top: 45px;
     }
@@ -459,7 +483,6 @@
     
     &--main {
       font-size: 32px;
-      font-family: Marcellus;
       font-weight: 400;
       line-height: 36px;
       color: @TextHeading;
@@ -510,7 +533,6 @@
       }
       &--text {
         padding-top: 16px;
-        font-style: Inter;
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
@@ -551,7 +573,6 @@
       }
       &--text {
         padding-top: 16px;
-        font-style: Inter;
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
@@ -619,7 +640,6 @@
       }
       &--text {
         padding-top: 16px;
-        font-style: Inter;
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
@@ -666,7 +686,6 @@
       }
       &--text {
         padding-top: 16px;
-        font-style: Inter;
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
@@ -713,7 +732,6 @@
       }
       &--text {
         padding-top: 16px;
-        font-style: Inter;
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
@@ -769,6 +787,32 @@
   &__btn {
     padding-top: 56px;
     text-align-last: center;
+    .btn_main {
+      background-color: @ButtonPrimary;
+      color: @ButtonSecondary;
+      width: 178px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: none;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 10px;
+      @media @tablet {
+        width: 110px;
+        font-size: 12px;
+        height: 34px;
+      }
+      @media @mobile {
+        width: 110px;
+        font-size: 12px;
+        height: 34px;
+      }
+    }
     @media screen and (max-width: 768px) {
       padding-top: 30px;
     }
@@ -786,7 +830,6 @@
     &--main {
       padding: 10px;
       font-size: 32px;
-      font-family: Marcellus;
       font-weight: 400;
       line-height: 36px;
       color: @TextHeading;
@@ -835,7 +878,6 @@
       }
       &--text {
         padding-top: 16px;
-        font-style: Inter;
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
@@ -899,7 +941,6 @@
       }
       &--text {
         padding-top: 16px;
-        font-style: Inter;
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
@@ -946,7 +987,6 @@
       }
       &--text {
         padding-top: 16px;
-        font-style: Inter;
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
@@ -1015,7 +1055,7 @@
 <script>
 import NoSSR from "vue-no-ssr";
 import "video.js/dist/video-js.min.css";
-import btn from "./../components/common/button.vue";
+
 
 export default {
   data() {
@@ -1067,7 +1107,6 @@ export default {
     }
   },
   components: {
-    "sm-button": btn,
     "no-ssr": NoSSR
   },
   mounted() {
