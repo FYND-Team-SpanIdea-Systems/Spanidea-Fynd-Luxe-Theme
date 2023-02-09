@@ -393,8 +393,12 @@ export default {
 <style scoped lang="less">
 .video-container {
   position: relative;
-  height: 100vh;
+  //height: 100vh;
+  height: 84vh;
 
+  @media screen and (max-width: 768px) {
+    height: 90vh;
+  }
   @media screen and (max-width: 480px) {
     height: 226px;
   }
