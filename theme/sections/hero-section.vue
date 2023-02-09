@@ -12,10 +12,13 @@
                 </div>
                 <div class="heroBtn fadeIn">
                     <fdk-link :link="settings.props.button_link.value">
-                        <sm-button :backgroundcolortype="'primary'" :colortype="'primary'" :bordertype="'primary'"
+                        <button class="btnStyle" v-if="settings.props.button_text.value">{{
+                            settings.props.button_text.value
+                        }}</button>
+                        <!-- <sm-button :backgroundcolortype="'primary'" :colortype="'primary'" :bordertype="'primary'"
                             :padding="'primary'" :global_config="global_config" v-if="settings.props.button_text.value">
                             {{ settings.props.button_text.value }}
-                        </sm-button>
+                        </sm-button> -->
                     </fdk-link>
                 </div>
 
@@ -174,6 +177,26 @@
 
 }
 
+.btnStyle {
+    background-color: @ButtonPrimary;
+    color: @ButtonSecondary ;
+    border: 1px solid @ButtonPrimary;
+    cursor: pointer;
+    //styleName: desktop/Button - 14 px;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+    padding: 12px 32px;
+    min-width: 140px;
+    height: 48px;
+
+    @media screen and (max-width: 768px) {
+        font-size: 12px;
+    }
+}
+
 .d-hero-itb>.primaryDiv>.d-hero-itb__content {
     display: flex;
     flex-direction: column;
@@ -296,7 +319,7 @@
     }
 
     @media screen and (max-width: 480px) {
-       // width: 288px;
+        // width: 288px;
         width: unset;
         padding-top: 0px;
         align-self: unset;
@@ -398,9 +421,10 @@
 
     margin-top: 13%;
 
-    @media screen and (max-width: 480px){
+    @media screen and (max-width: 480px) {
         margin-top: unset;
     }
+
     @media screen and (max-width: 480px) {
         margin-top: 24px;
         margin-bottom: 22px;
@@ -603,6 +627,7 @@
         padding-left: 32px;
 
     }
+
     @media screen and (max-width: 480px) {
         order: 0;
         padding-left: 16px;
@@ -715,7 +740,7 @@
     height: 100%;
     background-color: @PageBackground;
     animation-name: example50;
-    animation-duration: 1s;  //1.2s
+    animation-duration: 1s; //1.2s
     animation-delay: 1s;
     animation-direction: reverse;
     animation-fill-mode: forwards;
