@@ -67,14 +67,12 @@
         <!-- End of Product Rating -->
         <div class="card-desc">
           <h6
-            class="ukt-title"
-            :style="`color: ${global_config.props.text_heading_link_color}`"
+            class="ukt-title font-body"
           >
             {{ product.brand.name }}
           </h6>
           <div
-            class="info regular-xxxs"
-            :style="`color: ${global_config.props.text_heading_link_color}`"
+            class="info regular-xxxs font-body"
             :title="product.name"
           >
             {{ product.name }}
@@ -82,14 +80,9 @@
           <div class="price">
             <span class="effective-price">
               <div>
-                <span class="regular-xs cl-Profit">
+                <span class="regular-xs cl-Profit font-body">
                   <span
                     v-if="product.price.effective"
-                    :style="
-                      getProductPrice('effective') !== getProductPrice('marked')
-                        ? 'color:' + global_config.props.text_sale_price_color
-                        : 'color:' + global_config.props.text_price_color
-                    "
                   >
                     {{
                       getListingPrice("effective") ||
@@ -98,17 +91,13 @@
                   >
                 </span>
                 <span
-                  class="regular-xxxs text-seperator"
+                  class="regular-xxxs text-seperator font-body"
                   v-if="
                     getProductPrice('effective') !== getProductPrice('marked')
                   "
                 ></span>
                 <span
-                  :style="
-                    'color:' +
-                    global_config.props.text_strikethrough_price_color
-                  "
-                  class="strike-through regular-xxxs cl-DustyGray2"
+                  class="strike-through regular-xxxs cl-DustyGray2 font-body"
                   v-if="
                     getProductPrice('effective') !== getProductPrice('marked')
                   "
@@ -334,7 +323,7 @@ export default {
 .discount-container {
   position: absolute;
   bottom: 27%;
-  color: white;
+  color: @TextHeading;
   width: 100%;
   height: 25px;
   @media @mobile {
@@ -353,7 +342,7 @@ export default {
 .out-of-stock-container {
   position: absolute;
   bottom: 27%;
-  color: red;
+  color: @TextHeading;
   width: 100%;
   height: 25px;
   @media @mobile {
@@ -392,8 +381,9 @@ export default {
   .ukt-title {
     padding: 16px 0 0 0;
     height: 20px;
-    font-family: 'Inter';
+    // font-family: 'Inter';
     font-style: normal;
+    color: @TextHeading;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
@@ -414,7 +404,8 @@ export default {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    font-family: 'Inter';
+    // font-family: 'Inter';
+    color: @TextHeading;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -431,13 +422,13 @@ export default {
     }
     .effective-price {
       height: 20px;
-      font-family: 'Inter';
+      // font-family: 'Inter';
+      color: @TextHeading;
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
       line-height: 20px;
       letter-spacing: -0.02em;
-      color: #26201A;
       @media @mobile {
         font-size: 14px;
         line-height: 16px;

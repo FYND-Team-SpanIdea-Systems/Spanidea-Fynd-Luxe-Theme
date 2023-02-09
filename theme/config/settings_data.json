@@ -90,7 +90,7 @@
                 },
                 "button": {
                   "button_primary": "#050505",
-                  "button_secondary": "#000000",
+                  "button_secondary": "#fdfcfc",
                   "button_link": "#B1655B"
                 },
                 "sale_discount": {

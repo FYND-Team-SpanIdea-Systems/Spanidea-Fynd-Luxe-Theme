@@ -110,5 +110,82 @@ export default {
   getCustomTemplates: () => {
     return CustomTemplates;
   },
+  bootstrapTheme: (vueApp) => {
+    if (!isBrowser) {
+      return Promise.resolve();
+    }
+
+    /** Need to optimize the way to get the current global_config data */
+    const themeConfig = vueApp?.store?.state?.appmeta?.theme?.config || {};
+    const currentConfig = themeConfig.current || "";
+    const configList = themeConfig.list || [];
+    const currentGlobalConfig = configList.find((configData) => configData.name === currentConfig) || {};
+    const globalConfigData = currentGlobalConfig?.global_config?.custom?.props || {};
+
+    const headerFont = globalConfigData.font_header;
+    const bodyFont = globalConfigData.font_body;
+
+    const headerFontName = headerFont.family || "";
+    const headerFontVariants = headerFont.variants || {};
+
+    const bodyFontName = bodyFont.family || "";
+    const bodyFontVariants = bodyFont.variants || {};
+
+    let styles = "";
+
+    if (headerFontName) {
+      Object.keys(headerFontVariants).forEach((variant) => {
+        let fontStyles = `
+            @font-face {
+              font-family: ${headerFontName};
+              src: local(${headerFontName}),
+                url(${headerFontVariants[variant].file});
+              font-weight: ${headerFontVariants[variant].name};
+              font-display: swap;
+            }
+          `;
+
+        styles = styles.concat(fontStyles);
+      });
+
+      const customFontClasses = `
+          .font-header {
+            font-family: ${headerFontName} !important;
+          }
+        `;
+
+      styles = styles.concat(customFontClasses);
+    }
+
+    if (bodyFontName) {
+      Object.keys(bodyFontVariants).forEach((variant) => {
+        let fontStyles = `
+            @font-face {
+              font-family: ${bodyFontName};
+              src: local(${bodyFontName}),
+                url(${bodyFontVariants[variant].file});
+              font-weight: ${bodyFontVariants[variant].name};
+              font-display: swap;
+            }
+          `;
+
+        styles = styles.concat(fontStyles);
+      });
+
+      const customFontClasses = `
+          .font-body {
+            font-family: ${bodyFontName} !important;
+          }
+        `;
+
+      styles = styles.concat(customFontClasses);
+    }
+
+    if (styles && typeof document !== "undefined") {
+      var styleSheet = document.createElement("style");
+      styleSheet.innerText = styles;
+      document.head.appendChild(styleSheet);
+    }
+  },
   sections,
 };

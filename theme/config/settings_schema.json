@@ -77,14 +77,14 @@
       "type": "color",
       "category": "Colors",
       "id": "button_add_to_cart_color",
-      "label": "Add to cart/Buy Now  ",
+      "label": "Add to cart  ",
       "default": "#000000"
     },
     {
       "type": "color",
       "category": "Colors",
       "id": "button_add_to_cart_label_color",
-      "label": "Add to cart/Buy Now label ",
+      "label": "Add to cart label ",
       "default": "#ffffff"
     },
     {
@@ -158,13 +158,6 @@
     {
       "type": "color",
       "category": "Colors",
-      "id": "tax_label_color",
-      "label": "Price (tax incl.) label",
-      "default": "#9B9B9B"
-    },
-    {
-      "type": "color",
-      "category": "Colors",
       "id": "text_discount_color",
       "label": "Discount ",
       "default": "#ee478d"
@@ -213,6 +206,11 @@
       "value": ""
     },
     {
+      "type": "header",
+      "category": "Colors",
+      "value": ""
+    },
+    {
       "type": "select",
       "id": "menu_position",
       "default": "left",
@@ -237,30 +235,31 @@
       "label": "Disable Cart"
     },
     {
-      "type": "header",
-      "category": "Footer",
-      "value": "Artwork"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_artwork",
+      "type": "font",
+      "id": "font_header",
+      "category": "Typography",
       "default": false,
-      "category": "Footer",
-      "label": "Enable Footer Artwork"
+      "label": "Font Header"
+    },
+    {
+      "type": "font",
+      "id": "font_body",
+      "category": "Typography",
+      "default": false,
+      "label": "Font Body"
     },
     {
       "type": "image_picker",
-      "id": "artwork",
+      "id": "logo",
       "default": "",
       "category": "Footer",
-      "label": "Footer Artwork (Desktop)"
+      "label": "Logo"
     },
     {
-      "type": "image_picker",
-      "id": "artwork_mweb",
-      "default": "",
-      "category": "Footer",
-      "label": "Footer Artwork (Mobile)"
+      "type": "textarea",
+      "id": "footer_description",
+      "label": "Description",
+      "category": "Footer"
     }
   ]
 }

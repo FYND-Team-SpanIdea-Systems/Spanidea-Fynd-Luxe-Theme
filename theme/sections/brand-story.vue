@@ -4,10 +4,10 @@
       <img :src="settings.props.image.value" />
     </div>
     <div  :class='["media-with-text__content"] '>
-      <div class="media-with-text__content--main">
+      <div class="media-with-text__content--main font-header">
         {{ settings.props.text.value }}
       </div>
-      <div class="media-with-text__content--sub">
+      <div class="media-with-text__content--sub font-body">
         {{ settings.props.heading.value }}
       </div>
     </div>
@@ -78,20 +78,22 @@
 
 <!-- #endregion -->
 <style lang="less" scoped>
+
 .media-with-text {
   display: flex;
   width: 1440px;
-  height: 990px;
+  // height: 990px;
   box-sizing: border-box;
   @media screen and (max-width: 768px) {
     width: 744px;
-    height: 525px;
+    // height: 525px;
   }
   @media screen and (max-width: 480px) {
     width: 320px;
-    height: 850px;
+    // height: 850px;
     flex-direction: column;
   }
+
   .image-section {
     flex: 50%;
     box-sizing: border-box;
@@ -117,6 +119,7 @@
       padding-right: 0px;
     }
   }
+
   &__content {
     text-align: left;
     padding-top: 40px;
@@ -138,11 +141,12 @@
     
     &--main {
       font-size: 32px;
-      font-family: Marcellus;
       font-weight: 400;
       line-height: 36px;
       width: 488px;
       height: 108px;
+      color: @TextHeading;
+
       @media screen and (max-width: 768px) {
         font-size: 28px;
         line-height: 32px;
@@ -158,14 +162,15 @@
     }
     &--sub {
       font-size: 14px;
-      font-family: Inter;
       font-weight: 400;
       line-height: 20px;
       width: 488px;
       height: 140px;
       padding-top: 16px;
+      color: @TextBody;
+
       @media screen and (max-width: 768px) {
-        padding-top: 8px;
+        padding-top: 45px;
         font-size: 12px;    
         line-height: 20px;
         width: 330px;
@@ -181,6 +186,7 @@
     }
   }
 }
+
 .mirror-on {
   flex-direction: row-reverse;
   .image-section {
@@ -216,6 +222,7 @@
     }
   }
 }
+
 .style-style2 {
   height: 664px;
   @media screen and (max-width: 768px) {
@@ -239,7 +246,7 @@
   left:0px;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: @PageBackground;
   animation-name: example100;
   animation-duration: 1.5s;
   animation-direction:reverse;
@@ -249,12 +256,14 @@
   0%   {height:0%;}
   100% {height:100%;}
 }
+
 </style>
 
 <script>
 import NoSSR from "vue-no-ssr";
 import { isBrowser, isNode } from "browser-or-node";
 import "video.js/dist/video-js.min.css";
+
 export default {
   data() {
     return {

@@ -10,8 +10,7 @@
         <div class="top-items">
           <div class="title-block">
             <div
-              :style="'color:' + global_config.props.text_heading_link_color"
-              class="section-heading"
+              class="section-heading font-header"
               v-if="
                 (getSectionValue(settings,'title') &&
                 getSectionValue(settings,'title').length > 0) ||getSectionValue(settings,'cta_text')
@@ -67,14 +66,9 @@
               <div class="but1">
                 <fdk-link :link= "`/products/`">
                   <div class="button1">
-                    <sm-button
-                    :backgroundcolortype="'secondary'"
-                    :colortype="'primary'"
-                    :bordertype="'primary'"
-                    :padding="'primary'"
-                    :global_config="global_config"
+                    <button class="but11"
                     v-if="getSectionValue(settings,'button_text')"
-                  >{{ getSectionValue(settings,'button_text') }}</sm-button>
+                  >{{ getSectionValue(settings,'button_text') }}</button>
                   </div>
                 </fdk-link>
               </div>
@@ -123,14 +117,9 @@
               <div class="but2">
                 <fdk-link :link= "`/products/`">
                   <div class="button2">
-                    <sm-button
-                    :backgroundcolortype="'secondary'"
-                    :colortype="'primary'"
-                    :bordertype="'primary'"
-                    :padding="'primary'"
-                    :global_config="global_config"
+                    <button class="but22"
                     v-if="getSectionValue(settings,'button_text')"
-                  >{{ getSectionValue(settings,'button_text') }}</sm-button>
+                  >{{ getSectionValue(settings,'button_text') }}</button>
                   </div>
                 </fdk-link>
               </div>
@@ -210,9 +199,9 @@
   max-width: 1440px;
   padding: 0px;
   // margin-left: 25px;
-  @media @tablet {
-    max-width: 744px;
-  }
+  // @media @tablet {
+  //   max-width: 744px;
+  // }
 }
 .gallery-container {
   @media @mobile {
@@ -245,16 +234,16 @@
         height: 32px;
         margin: 32px auto 0px;
       }
-      @media @mobile {
-        margin: 24px 48px 0 8px;
-      }
+      // @media @mobile {
+      //   margin: 24px 14px 0 7px;
+      // }
       .section-heading {
         font-size: 32px;
         font-weight: 400;
         text-transform: uppercase;
         text-align: center;
-        font-family: 'Marcellus';
         font-style: normal;
+        color: @TextHeading;
         line-height: 36px;
         letter-spacing: -0.02em;
         @media @tablet {
@@ -470,6 +459,13 @@
     width: 306px;
   }
   .button1 {
+    color: @TextHeading;
+    background-color:@PrimaryColor ;
+    width: 140px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @media @tablet {
       margin-top: 0px;
     }
@@ -479,7 +475,13 @@
     }
   }
   .button2 {
-    // margin-top: 76px;
+    color: @TextHeading;
+    background-color:@PrimaryColor;
+    width: 140px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @media @tablet {
       display: flex;
       justify-content: center;
@@ -496,6 +498,10 @@
       margin-top: 0px;
     }
   }
+  .but11 {
+    background-color: @ButtonPrimary;
+    color: @ButtonSecondary;
+  }
   .but2 {
     display: flex;
     justify-content: center;
@@ -504,8 +510,12 @@
       margin-top: 32px;
     }
     @media @mobile {
-      margin-top: 0px;
+      margin-top: 24px;
     }
+  }
+  .but22 {
+    background-color: @ButtonPrimary;
+    color: @ButtonSecondary;
   }
 }
 </style>

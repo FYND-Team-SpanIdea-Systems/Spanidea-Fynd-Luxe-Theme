@@ -24,24 +24,15 @@
             </li>
           </ul>
       </div>
-      <div class="media-with-text__content--main">
+      <div class="media-with-text__content--main font-header">
         {{ settings.props.productName.value }}
       </div>
-      <div class="media-with-text__content--sub">
+      <div class="media-with-text__content--sub font-body">
         {{ settings.props.productDescription.value }}
       </div>
       <div class="media-with-text__content--btn">
         <fdk-link :link= "`/product/${slug_val}`">
-          <sm-button
-          :backgroundcolortype="'primary'"
-          :colortype="'primary'"
-          :bordertype="'primary'"
-          :padding="'primary'"
-          :global_config="global_config"
-          v-if="settings.props.button_text.value"
-          >
-            {{ settings.props.button_text.value }}
-          </sm-button>
+          <button class="btn_main">{{ settings.props.button_text.value }}</button>
         </fdk-link>
       </div>
     </div>
@@ -114,7 +105,7 @@
 <style lang="less" scoped>
 .media-with-text {
   width: 1440px;
-  height: 808px;
+  // height: 808px;
   gap: 56px;
   display: flex;
   align-items: center;
@@ -141,7 +132,7 @@
   }
   @media screen and (max-width: 768px) {
     width: 685px;
-    height: 808px;
+    // height: 808px;
     gap: 32px;
     flex-direction: row-reverse;
     .image-section-first-M {
@@ -220,7 +211,7 @@
   }
   @media screen and (max-width: 480px) {
     width: 320px;
-    height: 764px;
+    // height: 764px;
     flex-direction: column;
     .image-section-first-M {
       display: none;
@@ -372,11 +363,11 @@
     }
     &--main {
       font-size: 32px;
-      font-family: Marcellus;
       font-weight: 400;
       line-height: 36px;
       width: 488px;
       padding-top: 48px;
+      color: @TextHeading;
       @media screen and (max-width: 768px) {
         font-size: 28px;
         line-height: 32px;
@@ -392,10 +383,10 @@
     &--sub {
       padding-top: 16px;
       font-size: 14px;
-      font-family: Inter;
       font-weight: 400;
       line-height: 20px;
       width: 488px;
+      color: @TextBody;
       @media screen and (max-width: 768px) {
         font-size: 12px;
         line-height: 20px;
@@ -409,6 +400,32 @@
       }
     }
     &--btn {
+      .btn_main {
+        background-color: @ButtonPrimary;
+        color: @ButtonSecondary;
+        width: 178px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        border: none;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 10px;
+        @media @tablet {
+          width: 110px;
+          font-size: 12px;
+          height: 34px;
+        }
+        @media @mobile {
+          width: 110px;
+          font-size: 12px;
+          height: 34px;
+        }
+      }
       padding-top: 40px;
       @media screen and (max-width: 480px) {
         padding-top: 32px;
@@ -561,7 +578,6 @@
 </style>
 
 <script>
-import btn from "./../components/common/button.vue";
 import NoSSR from "vue-no-ssr";
 import { isBrowser, isNode } from "browser-or-node";
 import "video.js/dist/video-js.min.css";
@@ -588,7 +604,6 @@ export default {
   props: ["settings", "apiSDK", "global_config"],
   computed: {},
   components: {
-    "sm-button": btn,
     "emerge-img": emergeImage,
     "no-ssr": NoSSR,
     videoPlayer: () => {

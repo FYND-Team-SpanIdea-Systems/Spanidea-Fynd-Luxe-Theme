@@ -19,16 +19,16 @@
             <div class="glide__slide" :class='["quotes-slider"]' v-for="(block, i) in blocks" :key="i">
               <div v-if="getSectionValue(settings,'font_layout') === 'small'">
                 <div class="testimonial">
-                  <p class="test1">
+                  <p class="test1 font-header">
                     {{ block.props && block.props.testimonialText.value
                     ? block.props.testimonialText.value
                     : 'Add customer reviews and testimonials to showcase your store’s happy customers.'
-                    }}
+                    }} 
                   </p>
                   <cite>
                     <section>
-                      <div>{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
-                      <div>{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
+                      <div class="font-body">{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
+                      <div class="font-body">{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
                     </section>
                   </cite>
                   <div class="arrows" :class='["quotes--slider","mirror_layout-" + settings.props.mirror_layout.value]' v-if="
@@ -51,7 +51,7 @@
               </div>
               <div v-if="getSectionValue(settings,'font_layout') === 'inter'">
                 <div :class='["testimonial","mirror_layout-" + settings.props.mirror_layout.value]'>
-                  <p class="test2">
+                  <p class="test2 font-header">
                     {{ block.props && block.props.testimonialText.value
                     ? block.props.testimonialText.value
                     : 'Add customer reviews and testimonials to showcase your store’s happy customers.'
@@ -59,8 +59,8 @@
                   </p>
                   <cite>
                     <section>
-                      <div>{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
-                      <div>{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
+                      <div class="font-body">{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
+                      <div class="font-body">{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
                     </section>
                   </cite>
                   <div class="arrows" :class='["quotes--slider","mirror_layout-" + settings.props.mirror_layout.value]' v-if="
@@ -83,7 +83,7 @@
               </div>
               <div v-if="getSectionValue(settings,'font_layout') === 'large'">
                 <div class="testimonial">
-                  <p class="test3">
+                  <p class="test3 font-header">
                     {{ block.props && block.props.testimonialText.value
                     ? block.props.testimonialText.value
                     : 'Add customer reviews and testimonials to showcase your store’s happy customers.'
@@ -91,8 +91,8 @@
                   </p>
                   <cite>
                     <section>
-                      <div>{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
-                      <div>{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
+                      <div class="font-body">{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
+                      <div class="font-body">{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
                     </section>
                   </cite>
                   <div class="arrows" :class='["quotes--slider","mirror_layout-" + settings.props.mirror_layout.value]' v-if="
@@ -133,7 +133,7 @@
                 </div>
                 <div v-if="getSectionValue(settings,'font_layout') === 'small'">
                   <div class="testimonial2">
-                    <p class="test1">
+                    <p class="test1 font-header">
                       {{ block.props && block.props.testimonialText.value
                       ? block.props.testimonialText.value
                       : 'Add customer reviews and testimonials to showcase your store’s happy customers.'
@@ -141,15 +141,15 @@
                     </p>
                     <cite>
                       <section>
-                        <div>{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
-                        <div>{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
+                        <div class="font-body">{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
+                        <div class="font-body">{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
                       </section>
                     </cite>
                   </div>
                 </div>
                 <div v-if="getSectionValue(settings,'font_layout') === 'inter'">
                   <div class="testimonial2">
-                    <p class="test2">
+                    <p class="test2 font-header">
                       {{ block.props && block.props.testimonialText.value
                       ? block.props.testimonialText.value
                       : 'Add customer reviews and testimonials to showcase your store’s happy customers.'
@@ -157,15 +157,15 @@
                     </p>
                     <cite>
                       <section>
-                        <div>{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
-                        <div>{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
+                        <div class="font-body">{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
+                        <div class="font-body">{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
                       </section>
                     </cite>
                   </div>
                 </div>
                 <div v-if="getSectionValue(settings,'font_layout') === 'large'">
                   <div class="testimonial2">
-                    <p class="test3">
+                    <p class="test3 font-header">
                       {{ block.props && block.props.testimonialText.value
                       ? block.props.testimonialText.value
                       : 'Add customer reviews and testimonials to showcase your store’s happy customers.'
@@ -173,8 +173,8 @@
                     </p>
                     <cite>
                       <section>
-                        <div>{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
-                        <div>{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
+                        <div class="font-body">{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
+                        <div class="font-body">{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
                       </section>
                     </cite>
                   </div>
@@ -218,7 +218,7 @@
               <div class="glide__slide quotes-slider3" v-for="(block, i) in blocks" :key="i">
                 <div v-if="getSectionValue(settings,'font_layout') === 'small'">
                   <div class="testimonial3">
-                    <p class="test1">
+                    <p class="test1 font-header">
                       {{ block.props && block.props.testimonialText.value
                       ? block.props.testimonialText.value
                       : 'Add customer reviews and testimonials to showcase your store’s happy customers.'
@@ -228,7 +228,7 @@
                 </div>
                 <div v-if="getSectionValue(settings,'font_layout') === 'inter'">
                   <div class="testimonial3">
-                    <p class="test2">
+                    <p class="test2 font-header">
                       {{ block.props && block.props.testimonialText.value
                       ? block.props.testimonialText.value
                       : 'Add customer reviews and testimonials to showcase your store’s happy customers.'
@@ -238,7 +238,7 @@
                 </div>
                 <div v-if="getSectionValue(settings,'font_layout') === 'large'">
                   <div class="testimonial3">
-                    <p class="test3">
+                    <p class="test3 font-header">
                       {{ block.props && block.props.testimonialText.value
                       ? block.props.testimonialText.value
                       : 'Add customer reviews and testimonials to showcase your store’s happy customers.'
@@ -254,8 +254,8 @@
                 </div>  
                   <cite>
                     <section>
-                      <div>{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
-                      <div>{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
+                      <div class="font-body">{{ block.props && block.props.author_name.value ? block.props.author_name.value : "Author's name"}}</div>
+                      <div class="font-body">{{ block.props && block.props.author_description.value ? block.props.author_description.value : "Author's Description" }}</div>
                     </section>
                   </cite>                
             </div>
@@ -638,9 +638,9 @@
       section {
         font-stretch: normal;
         letter-spacing: -0.02em;
-        color: #26201a;
+        color: @TextHeading;
         flex-direction: column;
-        font-family: "Inter";
+        // font-family: "Inter";
         margin-top: 24px;
         @media @mobile {
           margin-left: -200px;
@@ -661,7 +661,7 @@
         > :nth-child(2) {
           font-size: 14px;
           height: 20px;
-          color: #504a42;
+          color: @TextHeading;
           padding: 8px 0 0px 0;
           @media @tablet {
             font-size: 12px;
@@ -723,9 +723,9 @@
         font-stretch: normal;
         text-align: normal;
         letter-spacing: -0.02em;
-        color: #504a42;
+        color: @TextHeading;
         flex-direction: column;
-        font-family: "Inter";
+        // font-family: "Inter";
         font-style: normal;
         font-weight: 400;
         @media @mobile {
@@ -782,14 +782,14 @@
         >:first-child {
           width: 375.79px;
           height: 22px;
-          font-family: 'Inter';
+          // font-family: 'Inter';
           font-style: normal;
           font-weight: 400;
           font-size: 16px;
           line-height: 22px;
           text-align: center;
           letter-spacing: -0.02em;
-          color: #26201A;
+          color: @TextHeading;
           @media @tablet {
             width: 242px;
             height: 20px;
@@ -807,14 +807,14 @@
           padding: 4px 0 0;
           width: 375.79px;
           height: 20px;
-          font-family: 'Inter';
+          // font-family: 'Inter';
           font-style: normal;
           font-weight: 400;
           font-size: 14px;
           line-height: 20px;
           text-align: center;
           letter-spacing: -0.02em;
-          color: #504A42;
+          color: @TextHeading;
           @media @tablet {
             width: 242px;
             font-size: 12px;
@@ -916,12 +916,12 @@
     width: 100%;
     margin: 158px 0px 0px 0px;
     box-sizing: border-box;
-    font-family: 'Galvji';
+    // font-family: 'Galvji';
     font-style: normal;
     font-weight: 400;
     text-align: center;
     letter-spacing: -0.03em;
-    color: #26201A;
+    color: @TextHeading;
 
     &.mirror_layout-off {
       // margin: 54px 0px 0px 0px;
@@ -947,12 +947,13 @@
       margin: 0px 0 0 0px;
       padding: 0px 32px;
       letter-spacing: -0.03em;
-      font-family: 'Marcellus';
+      // font-family: 'Marcellus';
     }
     .test1 {
       font-size: 36px;
       line-height: 44px;
       text-align: center;
+      color: @TextHeading;
       @media @tablet {
         font-size: 28px;
         line-height: 44px;
@@ -966,6 +967,7 @@
       font-size: 40px;
       line-height: 48px;
       text-align: center;
+      color: @TextHeading;
       @media @tablet {
         font-size: 32px;
         line-height: 48px;
@@ -979,6 +981,7 @@
       font-size: 44px;
       line-height: 50px;
       text-align: center;
+      color: @TextHeading;
       @media @tablet {
         font-size: 36px;
         line-height: 52px;
@@ -1000,35 +1003,35 @@
       height: auto;    
     }
     .test1 {
-      font-family: 'Marcellus';
+      // font-family: 'Marcellus';
       font-style: normal;
       font-weight: 400;
       font-size: 16px;
       line-height: 24px;
       text-align: center;
       letter-spacing: -0.03em;
-      color: #26201A;
+      color: @TextHeading;
       height: 120px;
     }
     .test2 {
-      font-family: 'Marcellus';
+      // font-family: 'Marcellus';
       font-style: normal;
       font-weight: 400;
       font-size: 20px;
       line-height: 28px;
       text-align: center;
       letter-spacing: -0.03em;
-      color: #26201A;
+      color: @TextHeading;
     }
     .test3 {
-      font-family: 'Marcellus';
+      // font-family: 'Marcellus';
       font-style: normal;
       font-weight: 400;
       font-size: 24px;
       line-height: 30px;
       text-align: center;
       letter-spacing: -0.03em;
-      color: #26201A;
+      color: @TextHeading;
       height: 160px;
     }
   }
@@ -1045,8 +1048,9 @@
       padding: 0px;
     }
     .test1 {
-      font-family: 'Marcellus';
+      // font-family: 'Marcellus';
       font-style: normal;
+      color: @TextHeading;
       font-weight: 400;
       font-size: 30px;
       line-height: 44px;
@@ -1062,12 +1066,13 @@
       }
     }
     .test2 {
-      font-family: 'Marcellus';
+      // font-family: 'Marcellus';
       font-style: normal;
       font-weight: 400;
       font-size: 40px;
       line-height: 52px;
       text-align: center;
+      color: @TextHeading;
       letter-spacing: -0.03em;
       @media @tablet {
         font-size: 36px;
@@ -1079,12 +1084,13 @@
       }
     }
     .test3 {
-      font-family: 'Marcellus';
+      // font-family: 'Marcellus';
       font-style: normal;
       font-weight: 400;
       font-size: 43px;
       line-height: 55px;
       text-align: center;
+      color: @TextHeading;
       letter-spacing: -0.04em;
       @media @tablet {
         font-size: 38px;
