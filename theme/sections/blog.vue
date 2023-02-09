@@ -4,7 +4,7 @@
       <section :class='["media-with-text" ,"full-width-section"]' >
       <div :class='["media-with-text__content"] '>
         <div class="media-with-text__content--main">
-          {{ settings.props.text.value }} amresh
+          {{ settings.props.text.value }}
         </div>
       </div>
       <div class="media-with-text__mainBlock">
